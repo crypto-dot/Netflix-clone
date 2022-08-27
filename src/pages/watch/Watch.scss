@@ -1,0 +1,22 @@
+.watch {
+    width: 100vw;
+    height: 100vh;
+    button {
+        display: flex;
+        gap: .5rem;
+        font-size: 1.25rem;
+        align-items: center;
+        position: absolute;
+        top: 1.5rem;
+        left: 1rem;
+        color: white;
+        background-color: transparent;
+        border:none;
+        z-index: 99;
+        cursor: pointer;
+    }
+    .video {
+        height: 100%;
+        width: 100%;
+    }
+}
