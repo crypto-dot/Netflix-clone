@@ -1,5 +1,6 @@
 import "./Login.scss";
 import NetflixLogo from "../../assets/NetflixLogo.png";
+import React from 'react';
 const Register = () => {
 
     return (

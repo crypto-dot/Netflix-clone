@@ -2,6 +2,7 @@ import { InfoOutlined, PlayArrow } from "@material-ui/icons";
 import "./Featured.scss";
 import billBoardImg from "../../assets/billboardImg.webp";
 import BG from '../../assets/background.webp';
+import React from 'react';
 const Featured = ({ type }) => {
     return (
         <div className="featured">

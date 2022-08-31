@@ -1,5 +1,6 @@
-import "./Watch.scss"
-import { ArrowBackOutlined } from "@material-ui/icons"
+import "./Watch.scss";
+import { ArrowBackOutlined } from "@material-ui/icons";
+import React from 'react';
 const Watch = () => {
     return (
         <div className="watch">

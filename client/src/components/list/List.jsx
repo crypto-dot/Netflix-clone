@@ -1,7 +1,7 @@
 import "./List.scss";
 import { ArrowBackIosOutlined, ArrowForwardIosOutlined } from "@material-ui/icons"
 import ListItem from "../ListItem/ListItem";
-import { useRef, useState } from "react";
+import { useRef, useState, React } from "react";
 const List = () => {
     const convertPixelToRem = (px) => {
         return ((px) / parseFloat(window.getComputedStyle(document.body).getPropertyValue('font-size')));

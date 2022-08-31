@@ -3,6 +3,7 @@ import { ArrowDropDown, Notifications, Search } from '@material-ui/icons';
 import ProfileIcon from "../../assets/ProfileIcon.png";
 import { useState } from 'react';
 import './NavBar.scss';
+import React from 'react';
 const NavBar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     window.onscroll = () => {

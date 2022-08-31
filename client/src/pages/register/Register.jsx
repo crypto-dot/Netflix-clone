@@ -1,6 +1,7 @@
 import "./Register.scss";
 import NetflixLogo from "../../assets/NetflixLogo.png";
 import { useRef, useState } from "react";
+import React from 'react';
 const Register = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
