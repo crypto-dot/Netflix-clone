@@ -2,6 +2,7 @@ import "./Register.scss";
 import NetflixLogo from "../../assets/NetflixLogo.png";
 import { useRef, useState } from "react";
 import React from 'react';
+import { Link } from 'react-router-dom';
 const Register = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -27,7 +28,7 @@ const Register = () => {
                 <h1>Unlimited movies, TV shows, and more.</h1>
                 <h2>Watch anywhere. Cancel anytime.</h2>
                 <p>Ready to watch? Enter your email to create or restart your membership</p>
-                {!email ? (<div className="input">
+                {!email && emailRef.current.checkValidity() ? (<div className="input">
                     <input type="email" placeholder="Email Address" ref={emailRef} />
                     <button onClick={handleStart} className="registerButton">Get Started</button>
                 </div>) : (<form className="input">

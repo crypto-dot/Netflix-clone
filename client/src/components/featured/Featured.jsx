@@ -3,12 +3,13 @@ import "./Featured.scss";
 import billBoardImg from "../../assets/billboardImg.webp";
 import BG from '../../assets/background.webp';
 import React from 'react';
+import { Link } from 'react-router-dom';
 const Featured = ({ type }) => {
     return (
         <div className="featured">
             {type && (
                 <div className="category">
-                    <span>{type === "movie" ? "Movies" : "Series"}</span>
+                    <span>{type === "movies" ? "Movies" : "Series"}</span>
                     <select name="genre" id="genre">
                         <option>
                             Genre

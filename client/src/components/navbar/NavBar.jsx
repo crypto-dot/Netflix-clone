@@ -4,6 +4,7 @@ import ProfileIcon from "../../assets/ProfileIcon.png";
 import { useState } from 'react';
 import './NavBar.scss';
 import React from 'react';
+import { Link } from 'react-router-dom';
 const NavBar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     window.onscroll = () => {
@@ -17,9 +18,9 @@ const NavBar = () => {
             <div className="container">
                 <div className="left">
                     <img src={NetflixLogo} alt="Netflix logo" />
-                    <span>HomePage</span>
-                    <span>Series</span>
-                    <span>Movies</span>
+                    <Link className="link" to="/"><span>HomePage</span></Link>
+                    <Link className="link" to="/series"><span>Series</span></Link>
+                    <Link className="link" to="/movies"><span>Movies</span></Link>
                     <span>New and Popular</span>
                     <span>My List</span>
                 </div>
