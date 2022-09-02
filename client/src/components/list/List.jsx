@@ -52,7 +52,6 @@ const List = () => {
                     <ListItem index={8} />
                     <ListItem index={9} />
                     <ListItem index={10} />
-                    <ListItem index={1221} />
 
                 </div>
                 <ArrowForwardIosOutlined className="sliderArrow right" onClick={() => handleClick("right")} ref={rightArrowRef} />

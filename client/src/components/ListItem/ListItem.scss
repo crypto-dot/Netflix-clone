@@ -7,40 +7,60 @@
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    color:white;
+    color: white;
+    position: relative;
 
     img {
         width: 100%;
         height: 100%;
         object-fit: cover;
     }
+
+
     video {
-        width: 100%;
+        width: 25%;
         height: 61%;
         object-fit: cover;
         top: 0;
-        left:0;
+        left: 0;
         position: absolute;
     }
-    &:hover {
+
+    &:hover:not(:first-child) {
         border-radius: .3rem;
         width: initial;
         width: 20rem;
         height: 21rem;
-        -webkit-box-shadow: 0px 5px 23px 1px rgba(119,119,119,0.67); 
-box-shadow: 0px 5px 23px 1px rgba(119,119,119,0.67);
-        position: absolute;
+        -webkit-box-shadow: 0px 5px 23px 1px rgba(119, 119, 119, 0.67);
+        box-shadow: 0px 5px 23px 1px rgba(119, 119, 119, 0.67);
         top: -12rem;
-
+        margin-right: -2.25rem;
+        margin-left: -2.25rem;
+        z-index: 1;
     }
+
+    &:hover:is(:first-child) {
+        border-radius: .3rem;
+        width: initial;
+        width: 20rem;
+        height: 21rem;
+        -webkit-box-shadow: 0px 5px 23px 1px rgba(119, 119, 119, 0.67);
+        box-shadow: 0px 5px 23px 1px rgba(119, 119, 119, 0.67);
+        top: -12rem;
+        margin-right: -4.50rem;
+        z-index: 1;
+    }
+
     .item-info {
         padding: .5rem;
         padding-bottom: 0;
     }
+
     .icons {
         display: flex;
         gap: .25rem;
     }
+
     .item-info-top {
         display: flex;
         align-items: center;
@@ -49,15 +69,18 @@ box-shadow: 0px 5px 23px 1px rgba(119,119,119,0.67);
         margin-top: 2.5px;
         color: rgba(135, 135, 135, 0.742);
     }
+
     .desc {
         font-size: .8rem;
         line-height: 1.1rem;
     }
+
     .age-limit {
         padding: .1rem .25rem;
         border-radius: 1.5px;
-        border: 1px solid rgba(119,119,119);
+        border: 1px solid rgba(119, 119, 119);
     }
+
     .genre {
         font-size: .9rem;
         margin-bottom: .25rem;

@@ -7,13 +7,13 @@ import NotFound from "./pages/notfound/NotFound";
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import './App.scss';
 const App = () => {
-  const user = false;
+  const user = true;
   return (
     <Router>
       <Routes>
         <Route path="/" element={user ? <Home /> : <Navigate to="/register" />} />
-        <Route path="/register" element={!user ? <Register /> : <Navigate to="/home" />} />
-        <Route path="/login" element={!user ? <Login /> : <Navigate to="/home" />} />
+        <Route path="/register" element={!user ? <Register /> : <Navigate to="/" />} />
+        <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
         {user &&
           (<> <Route path="/movies" element={<Home type="movies" />} />
             <Route path="/series" element={<Home type="series" />} />

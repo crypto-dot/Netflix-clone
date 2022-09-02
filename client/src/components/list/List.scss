@@ -1,12 +1,14 @@
 .list {
     width: 100%;
     margin-top: 1rem;
+
     .list-title {
         font-size: 1.5rem;
         font-weight: 500;
         margin-left: 3rem;
-        color:white;
+        color: white;
     }
+
     .wrapper {
         margin-top: .5rem;
         position: relative;
@@ -23,16 +25,19 @@
             margin: auto;
             cursor: pointer;
             pointer-events: auto;
+
             &.left {
                 left: 0;
             }
+
             &.right {
                 right: 0;
             }
         }
-    
-        
+
+
         .container {
+            max-height: 126px;
             margin-left: 3rem;
             display: flex;
             width: max-content;

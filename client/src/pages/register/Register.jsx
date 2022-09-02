@@ -28,7 +28,7 @@ const Register = () => {
                 <h1>Unlimited movies, TV shows, and more.</h1>
                 <h2>Watch anywhere. Cancel anytime.</h2>
                 <p>Ready to watch? Enter your email to create or restart your membership</p>
-                {!email && emailRef.current.checkValidity() ? (<div className="input">
+                {!email ? (<div className="input">
                     <input type="email" placeholder="Email Address" ref={emailRef} />
                     <button onClick={handleStart} className="registerButton">Get Started</button>
                 </div>) : (<form className="input">
