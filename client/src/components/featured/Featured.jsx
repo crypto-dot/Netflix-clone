@@ -2,8 +2,28 @@ import { InfoOutlined, PlayArrow } from "@material-ui/icons";
 import "./Featured.scss";
 import billBoardImg from "../../assets/billboardImg.webp";
 import BG from '../../assets/background.webp';
-import React from 'react';
+import { React, useState, useEffect } from 'react';
+import axios from "axios";
 const Featured = ({ type }) => {
+    const [content, setContent] = useState({});
+    useEffect(() => {
+        const getRandomContent = async () => {
+            try {
+                const randomMovie = await axios.get(`movies/random?type=${type}`,
+                    {
+                        headers: {
+                            token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGZhYTQxODUxZmQ3NTljMDM2MmM0YiIsImFkbWluIjp0cnVlLCJpYXQiOjE2NjE5NzEwNjIsImV4cCI6MTY2MjQwMzA2Mn0.RHc-T28jpbeg5JoT3wD21N3dgA5mpttnFcGJzyvigpw"
+                        }
+                    }
+                );
+                setContent(randomMovie.data[0]);
+            } catch (err) {
+                console.log(err);
+            }
+        }
+        getRandomContent();
+    }, [type]);
+    console.log(content);
     return (
         <div className="featured">
             {type && (
@@ -29,12 +49,12 @@ const Featured = ({ type }) => {
                     </select>
                 </div>
             )}
-            <img src={BG} width="100%" />
+            <img src={content.image} width="100%" />
             <div className="info">
-                <img src={billBoardImg} />
+                <img src={content.imageTitle} />
 
                 <span className="desc">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, harum, suscipit enim sed aliquam quod rerum quam nesciunt consectetur voluptates nam quasi laborum temporibus nisi? Repellendus obcaecati officia nulla dolore.
+                    {content.description}
                 </span>
                 <div className="buttons">
                     <button className="play">

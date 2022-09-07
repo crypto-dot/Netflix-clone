@@ -1,0 +1,56 @@
+.navbar {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 99;
+
+    .logo {
+        font-family: 'Bebas Neue', cursive;
+        font-size: 2.5rem;
+        color: var(--main-color);
+    }
+
+    .navbar-wrapper {
+        height: 100%;
+        padding: 1rem 1rem 0rem 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .rightNav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: .8rem;
+
+
+            .avatar {
+                max-height: 3rem;
+                border-radius: 50%;
+                margin-bottom: .5rem;
+            }
+
+            .navRightIcons {
+                position: relative;
+
+                .icon {
+                    color: var(--main-color);
+                }
+
+                .topIconBag {
+                    position: absolute;
+                    text-align: center;
+                    top: -.6rem;
+                    left: .3rem;
+                    color: white;
+                    font-size: .7rem;
+                    width: 1rem;
+                    border-radius: 50%;
+                    background-color: rgb(217, 81, 18);
+                }
+
+            }
+        }
+    }
+}

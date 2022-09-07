@@ -24,31 +24,36 @@
         top: 0;
         left: 0;
         position: absolute;
+        z-index: -1;
+    }
+
+    &:hover {
+        border-radius: .3rem;
+        width: initial;
+        width: 17rem;
+        height: 20rem;
+        -webkit-box-shadow: 0px 5px 23px 1px rgba(119, 119, 119, 0.67);
+        box-shadow: 0px 5px 23px 1px rgba(119, 119, 119, 0.67);
+        top: -12rem;
+        z-index: 1;
+        cursor: pointer;
+
+        img {
+            max-height: 50%;
+        }
+
+        video {
+            z-index: 0;
+        }
     }
 
     &:hover:not(:first-child) {
-        border-radius: .3rem;
-        width: initial;
-        width: 20rem;
-        height: 21rem;
-        -webkit-box-shadow: 0px 5px 23px 1px rgba(119, 119, 119, 0.67);
-        box-shadow: 0px 5px 23px 1px rgba(119, 119, 119, 0.67);
-        top: -12rem;
-        margin-right: -2.25rem;
-        margin-left: -2.25rem;
-        z-index: 1;
+        margin-right: -.75rem;
+        margin-left: -.75rem;
     }
 
     &:hover:is(:first-child) {
-        border-radius: .3rem;
-        width: initial;
-        width: 20rem;
-        height: 21rem;
-        -webkit-box-shadow: 0px 5px 23px 1px rgba(119, 119, 119, 0.67);
-        box-shadow: 0px 5px 23px 1px rgba(119, 119, 119, 0.67);
-        top: -12rem;
-        margin-right: -4.50rem;
-        z-index: 1;
+        margin-right: -1.50rem;
     }
 
     .item-info {

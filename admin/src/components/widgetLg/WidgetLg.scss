@@ -1,0 +1,62 @@
+.widgetLg {
+    padding: 1rem;
+    flex: 2;
+    -webkit-box-shadow: -2px 4px 8px 2px rgba(0, 0, 0, 0.19);
+    box-shadow: -2px 4px 8px 2px rgba(0, 0, 0, 0.19);
+
+    .widgetLgTitle {
+        display: inline-block;
+        font-weight: 600;
+        font-size: 1.25rem;
+    }
+
+    .widgetLgTable {
+        width: 100%;
+        border-spacing: 1.3rem;
+
+        .widgetLgTr {
+
+            .widgetLgTh {
+                text-align: left;
+                font-weight: 600;
+                color: rgb(24, 24, 24);
+            }
+
+            .widgetLgAmount,
+            .widgetLgDate {
+                color: rgb(120, 120, 120);
+                font-weight: 300;
+            }
+
+            .widgetLgUser {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+
+                .widgetLgImg {
+                    max-height: 3rem;
+                    border-radius: 50%;
+                }
+            }
+
+            .widgetLgStatus {
+                .widgetLgButton {
+                    border-radius: .3rem;
+                    background-color: rgb(236, 236, 236);
+                    border: none;
+                    padding: .5rem;
+                    font-weight: 600;
+                    color: rgb(54, 54, 54);
+
+                    &.approved {
+                        background-color: rgb(124, 225, 164);
+                    }
+
+                    &.declined {
+                        background-color: rgb(235, 104, 104)
+                    }
+                }
+            }
+        }
+    }
+}
