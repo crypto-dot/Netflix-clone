@@ -1,0 +1,39 @@
+.userList {
+    flex: 4;
+
+    .userCell {
+        display: flex;
+        gap: .5rem;
+        align-items: center;
+
+        .userCellImg {
+            border-radius: 50%;
+            height: 3rem;
+        }
+
+    }
+
+    .userCellEdit {
+        background-color: rgb(94, 220, 94);
+        border: none;
+        padding: .5rem 1rem;
+        margin-right: 2rem;
+        border-radius: .3rem;
+        cursor: pointer;
+        color: white;
+
+        &:hover,
+        &:active {
+            background-color: rgb(124, 227, 124);
+        }
+    }
+
+    .userCellDelete {
+        cursor: pointer;
+
+        &:hover,
+        &:active {
+            color: red;
+        }
+    }
+}

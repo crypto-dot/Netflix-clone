@@ -33,7 +33,8 @@
                 background-color: rgb(242, 242, 242);
                 cursor: pointer;
 
-                &:hover {
+                &:hover,
+                &:active {
                     background-color: rgb(246, 246, 246);
                 }
             }
@@ -41,7 +42,7 @@
 
             .widgetSmImg {
                 border-radius: 50%;
-                max-height: 3rem;
+                height: 3rem;
             }
 
             .widgetSmUser {

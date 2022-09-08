@@ -1,0 +1,194 @@
+.user {
+    flex: 4;
+    padding: 1rem;
+
+    .userTitleContainer {
+        display: flex;
+        justify-content: space-between;
+
+        .userTitle {
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        .userAddButton {
+            border: none;
+            background-color: rgb(94, 220, 94);
+            padding: .5rem 2rem;
+            border-radius: .3rem;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: white;
+
+            &:hover,
+            &:active {
+                background-color: rgb(109, 241, 109);
+            }
+        }
+    }
+
+    .userContainer {
+        display: flex;
+        gap: 1.5rem;
+        margin-top: 1rem;
+
+        .userShow {
+            flex: 1;
+            padding: 1rem;
+            -webkit-box-shadow: -2px 4px 8px 2px rgba(0, 0, 0, 0.19);
+            box-shadow: -2px 4px 8px 2px rgba(0, 0, 0, 0.19);
+
+            .userShowTop {
+                display: flex;
+                gap: 1rem;
+                align-items: center;
+
+                .userShowImg {
+                    height: 3rem;
+                    border-radius: 50%;
+                }
+
+                .userShowTopTitle {
+                    display: flex;
+                    flex-direction: column;
+
+                }
+
+                .userShowTitle {
+                    color: rgb(120, 120, 120);
+                    font-weight: 300;
+                }
+            }
+
+            .userShowBottom {
+                margin-top: 1rem;
+
+                .userShowTitle {
+                    display: inline-block;
+                    margin-top: 1rem;
+                    margin-bottom: 1rem;
+                    font-weight: 600;
+                    color: rgb(120, 120, 120);
+
+                }
+
+                .userInfo {
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+
+                    .userInfoItem {
+                        display: flex;
+                        align-items: flex-end;
+                        gap: .55rem;
+                        padding: .5rem;
+                    }
+                }
+
+            }
+
+        }
+
+        .userUpdate {
+            flex: 2;
+            padding: 1rem;
+            -webkit-box-shadow: -2px 4px 8px 2px rgba(0, 0, 0, 0.19);
+            box-shadow: -2px 4px 8px 2px rgba(0, 0, 0, 0.19);
+
+            .userUpdateTitle {
+                font-size: 2rem;
+            }
+
+            .userUpdateForm {
+                margin-top: 1rem;
+                display: flex;
+
+                .userUpdateLeft {
+                    flex: 1.15;
+                    max-width: 60%;
+
+                    .userUpdateItem {
+                        .userInputItem {
+                            display: flex;
+                            gap: 1rem;
+                            flex-direction: column;
+
+                            &:not(:last-child) {
+                                margin-bottom: 1rem;
+                            }
+
+                            .userUpdateInput {
+                                font-size: 1.15rem;
+                                border: none;
+                                height: 2rem;
+                                outline: none;
+                                border-bottom: solid;
+                            }
+                        }
+                    }
+                }
+
+                .userUpdateRight {
+                    flex: 1.25;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: flex-end;
+
+                    .userUpdateRightSpaceContainer {
+                        flex: 1;
+                        height: 100%;
+                    }
+
+                    .userUpdateRightContainer {
+                        flex: 1;
+                        height: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+
+                        .userUpdateRightTopContainer {
+                            display: flex;
+                            align-items: center;
+                            gap: 1rem;
+
+                            .userUpdateRightImg {
+                                height: 10rem;
+                                border-radius: .5rem;
+                            }
+
+                            .publish {
+                                cursor: pointer;
+                                font-size: 2rem;
+
+                                &:hover,
+                                &:active {
+                                    color: rgba(0, 0, 0, 0.643);
+                                }
+                            }
+                        }
+
+                        .userUpdateRightBottomContainer {
+                            width: 100%;
+                            display: flex;
+                            justify-content: center;
+
+                            .userUpdateButton {
+                                color: white;
+                                background-color: rgb(11, 40, 155);
+                                border: none;
+                                border-radius: .2rem;
+                                padding: .5rem 2.5rem;
+                                cursor: pointer;
+
+                                &:hover,
+                                &:active {
+                                    background-color: rgb(37, 62, 163);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
