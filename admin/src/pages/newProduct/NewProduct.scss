@@ -1,0 +1,68 @@
+.newProduct {
+    flex: 4;
+
+    .newProductTitle {
+        font-weight: 600;
+
+    }
+
+    .newProductForm {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: fit-content;
+
+        .newProductItem {
+            display: flex;
+            flex-direction: column;
+            max-width: 15rem;
+
+            &:not(:first-child) {
+                input {
+                    border: none;
+                    height: 2rem;
+                    outline: none;
+                    border-bottom: 1px solid black;
+                    font-size: 1.1rem;
+                    padding-bottom: .5rem;
+                }
+            }
+
+            select {
+                height: 2rem;
+                width: 4rem;
+            }
+
+
+            label {
+                margin-bottom: 1rem;
+            }
+
+            &:first-child {
+
+                label {
+                    color: gray;
+                    margin-bottom: 1rem;
+                }
+
+                margin: 2rem 0rem;
+            }
+        }
+
+        .newProductButton {
+            margin-top: 1rem;
+            cursor: pointer;
+            width: 50%;
+            color: white;
+            border: none;
+            border-radius: 1rem;
+            padding: .5rem 2rem;
+            background-color: rgb(11, 40, 155);
+
+            &:hover,
+            &:active {
+                background-color: rgb(29, 56, 168);
+            }
+        }
+    }
+}

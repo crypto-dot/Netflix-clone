@@ -1,8 +1,9 @@
 .sidebar {
     flex: 1;
-    height: calc(100vh - 4.5rem);
+    height: calc(100vh - 3.5rem);
     position: sticky;
-    top: 4.5rem;
+    top: 3.5rem;
+
 
     .sidebarWrapper {
         padding: .5rem 1rem 1rem 1rem;
@@ -22,7 +23,15 @@
                 padding-left: .5rem;
                 list-style: none;
 
+                a {
+                    display: inline-block;
+                    width: 100%;
+                    color: black;
+                    text-decoration: none;
+                }
+
                 .sidebarListItem {
+
                     display: flex;
                     align-items: center;
                     gap: .3rem;

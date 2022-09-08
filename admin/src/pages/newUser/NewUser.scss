@@ -1,0 +1,79 @@
+.newUser {
+    flex: 4;
+    margin-top: .5rem;
+
+    .newUserTitle {
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+
+    .newUserForm {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+
+        .newUserItem {
+            width: 30rem;
+            display: flex;
+            flex-direction: column;
+
+            label {
+                margin-bottom: .5rem;
+                color: rgb(160, 159, 159);
+            }
+
+            ::-webkit-input-placeholder {
+                font-weight: 300;
+                color: rgb(72, 72, 72);
+            }
+
+            ::placeholder {
+                font-weight: 300;
+                color: rgb(72, 72, 72);
+            }
+
+            input {
+
+                height: 2.5rem;
+                border-radius: .3rem;
+                border: 1px solid rgb(180, 180, 180);
+                padding: .5rem;
+            }
+
+            .newUserGender {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+
+                label {
+                    color: black;
+                    margin-bottom: 0;
+                }
+
+
+            }
+
+            .newUserButton {
+                margin-top: 1rem;
+                border: none;
+                background-color: rgb(11, 40, 155);
+                color: white;
+                border-radius: 1rem;
+                padding: .5rem 1rem;
+                width: 15rem;
+                cursor: pointer;
+
+                &:hover,
+                &:active {
+                    background-color: rgb(29, 56, 168);
+                }
+            }
+
+            select {
+                height: 2.5rem;
+                max-width: 5rem;
+            }
+
+        }
+    }
+}

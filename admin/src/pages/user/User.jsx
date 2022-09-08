@@ -3,6 +3,9 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import './User.scss';
 const User = () => {
+    const handleInput = (e) => {
+        return e.target.value = e.target.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');
+    }
     return (
         <div className='user'>
             <div className="userTitleContainer">
@@ -67,7 +70,7 @@ const User = () => {
                                 </div>
                                 <div className="userInputItem">
                                     <label htmlFor="">Phone</label>
-                                    <input placeholder="+1 214 828 5082" type="text" onInput={(e) => e.target.value = e.target.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0')} maxLength={10} className="userUpdateInput" />
+                                    <input placeholder="+1 214 828 5082" type="text" onInput={handleInput} maxLength={10} className="userUpdateInput" />
                                 </div>
                                 <div className="userInputItem">
                                     <label htmlFor="">Location</label>
