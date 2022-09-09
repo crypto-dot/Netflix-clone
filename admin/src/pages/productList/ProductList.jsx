@@ -1,5 +1,5 @@
 import './ProductList.scss';
-import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+import { DataGrid } from '@mui/x-data-grid';
 import { DeleteOutline } from '@material-ui/icons';
 import { ProductRows } from '../../dummyData';
 import { Link } from 'react-router-dom';
@@ -9,7 +9,7 @@ const ProductList = () => {
     const [data, setData] = useState(ProductRows);
     const handleDelete = (productId) => {
         setData(data.filter(product => {
-            return product !== productId;
+            return product.id !== productId;
         }));
     }
     const columns = [
