@@ -1,3 +1,15 @@
+# Landing Page 
+
+<img width="1438" alt="Screen Shot 2022-08-31 at 4 29 18 PM" src="https://user-images.githubusercontent.com/78282234/189552238-02cd3236-0a65-433d-bbbc-e44f4b960995.png">
+
+Landing Page with some dummy data to represent the movie components.
+
+# Admin Panel
+
+<img width="1429" alt="Screen Shot 2022-09-08 at 7 38 46 PM" src="https://user-images.githubusercontent.com/78282234/189552170-4534468d-4ed2-45a7-bbad-82fb11e7149d.png">
+
+Basic admin panel with user analytics. At this stage of the project I had not yet hooked up my user data from MongoDB. So I used some dummy data.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
