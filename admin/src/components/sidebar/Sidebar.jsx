@@ -1,6 +1,6 @@
 import React from 'react';
 import './Sidebar.scss';
-import { LineStyle, Timeline, TrendingUp, PersonOutlineOutlined, StoreOutlined, AttachMoneyOutlined, BarChart, MailOutlineOutlined, QuestionAnswerOutlined, ChatBubbleOutlineOutlined, ReportOutlined, WorkOutlineOutlined } from '@material-ui/icons';
+import { LineStyle, Timeline, TrendingUp, PersonOutlineOutlined, AttachMoneyOutlined, BarChart, MailOutlineOutlined, QuestionAnswerOutlined, ChatBubbleOutlineOutlined, ReportOutlined, WorkOutlineOutlined, PlayArrowOutlined } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
 const Sidebar = () => {
     return (
@@ -34,10 +34,10 @@ const Sidebar = () => {
                                 Users
                             </li>
                         </Link>
-                        <Link to="/products">
+                        <Link to="/movies">
                             <li className="sidebarListItem">
-                                <StoreOutlined className="sidebarIcon" />
-                                Products
+                                <PlayArrowOutlined className="sidebarIcon" />
+                                Movies
                             </li>
                         </Link>
                         <li className="sidebarListItem">

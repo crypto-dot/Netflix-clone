@@ -6,7 +6,7 @@ const Chart = ({ title, data, dataKey, grid }) => {
         <div className="chart">
             <h3 className="chartTitle">{title}</h3>
             <ResponsiveContainer width="100%" aspect={4 / 1}>
-                <AreaChart data={data}>
+                <AreaChart data={data} >
                     <defs>
                         <linearGradient id="colorData" x1="0" y1="0" x2="0" y2="1">
                             <stop offset="5%" stopColor="#5777f2" stopOpacity={0.9} />
@@ -15,7 +15,7 @@ const Chart = ({ title, data, dataKey, grid }) => {
                     </defs>
                     {grid && <CartesianGrid strokeDasharray={10} />}
                     <Area type="monotone" dataKey={dataKey} stroke="#001061" fillOpacity={1} fill="url(#colorData)" />
-                    <XAxis dataKey="name" />
+                    <XAxis dataKey="name" allowDuplicatedCategories={false} />
 
                     <Tooltip />
                 </AreaChart>

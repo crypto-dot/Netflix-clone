@@ -29,7 +29,9 @@ router.delete('/:id', verify, async (req, res) => {
             res.status(500).json(err);
         }
     } else {
-        res.status(403).json('Forbidden Action');
+        if (!res.headersSent) {
+            res.status(403).json('Forbidden Action');
+        }
     }
 });
 router.get('/', verify, async (req, res) => {
@@ -57,8 +59,9 @@ router.get('/', verify, async (req, res) => {
         }
         res.status(200).json(list);
     } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
+        if (!res.headersSent) {
+            res.status(500).json(err);
+        }
     }
 
 });

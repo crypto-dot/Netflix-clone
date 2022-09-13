@@ -16,7 +16,9 @@ router.post("/register", async (req, res) => {
             const duplicatedKey = err.message.split("{ ")[1].split(":")[0];
             res.status(409).json(`Someone has already signed up with that ${duplicatedKey}`);
         } else {
-            res.status(500).json(err);
+            if (!res.headersSent) {
+                res.status(500).json(err);
+            }
         }
     }
 });
@@ -37,7 +39,9 @@ router.post("/login", async (req, res) => {
             res.status(200).json({ ...info, accessToken });
 
     } catch (err) {
-        res.status(500).json(err.message);
+        if (!res.headersSent) {
+            res.status(500).json(err);
+        }
     }
 })
 module.exports = router;

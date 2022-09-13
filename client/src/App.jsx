@@ -14,11 +14,12 @@ const App = () => {
         <Route path="/" element={user ? <Home /> : <Navigate to="/register" />} />
         <Route path="/register" element={!user ? <Register /> : <Navigate to="/" />} />
         <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
-        {user &&
-          (<> <Route path="/movies" element={<Home type="movies" />} />
-            <Route path="/series" element={<Home type="series" />} />
-            <Route path="/watch" element={<Watch />} /> </>)}
+        <Route path="/movies" element={user ? <Home type="movies" /> : <Navigate to="/login" />} />
+        <Route path="/series" element={user ? <Home type="series" /> : <Navigate to="/login" />} />
+        <Route path="/series" element={user ? <Home type="series" /> : <Navigate to="/login" />} />
+        <Route path="/watch" element={user ? <Watch /> : <Navigate to="/login" />} />
         <Route path="*" element={<NotFound />} />
+
       </Routes>
     </Router>
   )

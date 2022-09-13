@@ -28,7 +28,9 @@ router.post('/', verify, async (req, res) => {
             }
         }
     } else {
-        res.status(403).json('Forbidden Action');
+        if (!res.headersSent) {
+            res.status(403).json('Forbidden Action');
+        }
     }
 });
 
@@ -50,10 +52,13 @@ router.delete('/:id', verify, async (req, res) => {
             await Movie.findByIdAndDelete(req.params.id);
             res.status(200).json("Movie Deleted");
         } catch (err) {
+            console.log(err);
             res.status(500).json(err);
         }
     } else {
-        res.status(403).json('Forbidden Action');
+        if (!res.headersSent) {
+            res.status(403).json('Forbidden Action');
+        }
     }
 });
 router.get('/find/:id', verify, async (req, res) => {
@@ -65,7 +70,9 @@ router.get('/find/:id', verify, async (req, res) => {
             res.status(200).json(movie);
         }
     } catch (err) {
-        res.status(500).json(err);
+        if (!res.headersSent) {
+            res.status(500).json(err);
+        }
     }
 });
 router.get('/random', verify, async (req, res) => {
@@ -85,8 +92,9 @@ router.get('/random', verify, async (req, res) => {
         }
         res.status(200).json(movie);
     } catch (err) {
-        console.error(err);
-        res.status(500).json(err);
+        if (!res.headersSent) {
+            res.status(500).json(err);
+        }
     }
 });
 
@@ -97,11 +105,15 @@ router.get('/', verify, async (req, res) => {
             const movies = await Movie.find();
             res.status(200).json(movies.reverse());
         } catch (err) {
-            console.log(err);
-            res.status(500).json(err);
+            if (!res.headersSent) {
+                res.status(500).json(err);
+            }
+
         }
     } else {
-        res.status(403).json('Forbidden Action');
+        if (!res.headersSent) {
+            res.status(403).json('Forbidden Action');
+        }
     }
 });
 

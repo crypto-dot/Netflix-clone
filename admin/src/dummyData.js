@@ -1,4 +1,4 @@
-import { DeleteOutline } from '@material-ui/icons';
+
 
 export const UserData = [{ name: 'Jan', "activeUser": 2400 }, { name: 'Feb', "activeUser": 2400 }, { name: 'Mar', "activeUser": 2900 }, { name: 'Apr', "activeUser": 3100 }, { name: 'May', "activeUser": 4000 }, { name: 'Jun', "activeUser": 5000 }, { name: 'Jul', "activeUser": 6000 }, { name: 'Aug', "activeUser": 7000 }, { name: 'Sep', "activeUser": 6500 }, { name: 'Oct', "activeUser": 5000 }, { name: 'Nov', "activeUser": 7500 }, { name: 'Dev', "activeUser": 10000 }];
 export const ProductData = [{ name: 'Jan', "sales": 2400 }, { name: 'Feb', "sales": 2400 }, { name: 'Mar', "sales": 2900 }];
