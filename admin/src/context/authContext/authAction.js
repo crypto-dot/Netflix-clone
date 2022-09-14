@@ -14,3 +14,9 @@ export const loginFailure = () => {
         type: 'LOGIN_FAILURE'
     }
 }
+export const logout = () => {
+    console.log('te');
+    return {
+        type: 'LOGOUT'
+    }
+}

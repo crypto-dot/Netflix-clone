@@ -2,11 +2,11 @@ import React from 'react';
 import FeaturedInfo from '../../components/featuredInfo/FeaturedInfo.jsx';
 import Chart from '../../components/chart/Chart.jsx';
 import './Home.scss';
-import { UserData } from '../../dummyData';
 import WidgetSm from '../../components/widgetSm/WidgetSm.jsx';
 import WidgetLg from '../../components/widgetLg/WidgetLg.jsx';
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useContext } from 'react';
 import axios from 'axios';
+import { AuthContext } from '../../context/authContext/authContext.js';
 const Home = () => {
     const MONTHS = useMemo(() => [
         "Jan",
@@ -24,13 +24,13 @@ const Home = () => {
     ], []);
 
     const [userStats, setUserStats] = useState([]);
-
+    const { user } = useContext(AuthContext);
     useEffect(() => {
         const getStats = async () => {
             try {
                 const res = await axios.get("users/stats", {
                     headers: {
-                        token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMWE5MTdjYmVkOGRhNjkwZGY0MGRmMyIsImFkbWluIjp0cnVlLCJpYXQiOjE2NjI2ODU2MDQsImV4cCI6MTY2MzExNzYwNH0.hHO2DlZOP8HsRSJNJg6UE8YC0hjscnrMMok4Zqbzzkc"
+                        token: `Bearer ${user.accessToken}`
                     }
                 });
                 const listSorted = res.data.sort(
