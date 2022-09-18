@@ -2,11 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { AuthContextProvider } from './context/authContext/authContext';
+import { MovieContextProvider } from './context/movieContext/movieContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <AuthContextProvider>
-    <App />
+    <MovieContextProvider>
+      <App />
+    </MovieContextProvider>
   </AuthContextProvider>
 
 );

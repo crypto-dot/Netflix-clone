@@ -3,8 +3,8 @@ import { createContext, useReducer, useEffect } from 'react';
 
 const checkValidJSON = () => {
     try {
-        const str = JSON.parse(localStorage.getItem("user"));
-        return str;
+        const userObj = JSON.parse(localStorage.getItem("user"));
+        return userObj;
     } catch (err) {
         return null;
     }

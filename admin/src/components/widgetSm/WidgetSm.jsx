@@ -1,18 +1,16 @@
 import { Visibility } from '@material-ui/icons';
-import { React, useState, useEffect, useContext } from 'react';
+import { React, useState, useEffect } from 'react';
 import { AuthContext } from '../../context/authContext/authContext';
 import axios from 'axios';
 import './WidgetSm.scss';
 const WidgetSm = () => {
     const [newUsers, setNewUsers] = useState([]);
-    const { user } = useContext(AuthContext);
     useEffect(() => {
         const getNewUsers = async () => {
-            console.log(user);
             try {
                 const res = await axios.get('users/?new=true', {
                     headers: {
-                        token: `Bearer ${user.accessToken}`
+                        token: `Bearer ${JSON.parse(localStorage.getItem("user")).accessToken}`
                     }
                 });
                 setNewUsers(res.data);

@@ -5,8 +5,8 @@ export const loginStart = () => {
 }
 export const loginSuccess = (user) => {
     return {
-        type: 'LOGIN_SUCCESS',
-        payload: user
+        payload: user,
+        type: 'LOGIN_SUCCESS'
     }
 }
 export const loginFailure = () => {

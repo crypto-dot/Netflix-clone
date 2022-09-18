@@ -1,5 +1,5 @@
 .navbar {
-    color:white;
+    color: white;
     padding-right: 1rem;
     z-index: 999;
     position: fixed;
@@ -9,42 +9,58 @@
     &.scrolled {
         background-color: var(--main-color);
     }
-    .container{
+
+    .container {
         height: 70px;
-        padding: 0.5rem 2rem .5rem 1.7rem; 
+        padding: 0.5rem 2rem .5rem 1.7rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        background: linear-gradient(to top, transparent 0%, rgba(0,0,0,0.3) 50%);
+        background: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.3) 50%);
+
         .left {
             display: flex;
             align-items: center;
+
             img {
                 height: 50px;
                 margin-right: 1.45rem;
             }
+
             span {
                 margin-right: 1.25rem;
             }
 
         }
+
         .right {
             display: flex;
             align-items: center;
+
             img {
                 width: 30px;
                 height: 30px;
                 object-fit: cover;
                 cursor: pointer;
             }
+
             .profile {
                 .options {
                     display: none;
                     background-color: var(--main-color);
                     border-radius: .3rem;
                 }
+
                 span {
                     padding: .5rem;
+                    cursor: pointer;
+
+                    &:hover,
+                    &:active {
+                        background-color: rgba(97, 97, 97, 0.3);
+                    }
+
+
                 }
 
                 &:hover {
@@ -55,6 +71,7 @@
                     }
                 }
             }
+
             .icon {
                 margin: 0 1rem;
             }

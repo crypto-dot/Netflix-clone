@@ -4,9 +4,8 @@ import Chart from '../../components/chart/Chart.jsx';
 import './Home.scss';
 import WidgetSm from '../../components/widgetSm/WidgetSm.jsx';
 import WidgetLg from '../../components/widgetLg/WidgetLg.jsx';
-import { useState, useEffect, useMemo, useContext } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import axios from 'axios';
-import { AuthContext } from '../../context/authContext/authContext.js';
 const Home = () => {
     const MONTHS = useMemo(() => [
         "Jan",
@@ -24,13 +23,12 @@ const Home = () => {
     ], []);
 
     const [userStats, setUserStats] = useState([]);
-    const { user } = useContext(AuthContext);
     useEffect(() => {
         const getStats = async () => {
             try {
                 const res = await axios.get("users/stats", {
                     headers: {
-                        token: `Bearer ${user.accessToken}`
+                        token: `Bearer ${JSON.parse(localStorage.getItem("user")).accessToken}`
                     }
                 });
                 const listSorted = res.data.sort(
