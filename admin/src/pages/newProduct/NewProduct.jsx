@@ -1,33 +1,88 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
+import { storage } from '../../firebase';
 import './NewProduct.scss';
+import { MovieContext } from '../../context/movieContext/movieContext';
+import { createMovie } from '../../context/movieContext/apiCalls';
 const NewProduct = () => {
     const [movie, setMovie] = useState({ isSeries: true });
 
+    const [image, setImage] = useState(null);
     const [titleImg, setTitleImg] = useState(null);
     const [thumbnailImg, setThumbnailImg] = useState(null);
     const [video, setVideo] = useState(null);
     const [trailer, setTrailer] = useState(null);
+    const [uploaded, setUploaded] = useState(0);
+
+    const { dispatch } = useContext(MovieContext);
 
     const handleChange = (e) => {
-        console.log(movie);
-        setMovie({ ...movie, [e.target.name]: e.target.value })
+        setMovie({ ...movie, [e.target.name]: e.target.value });
     }
 
     const handleChangeBoolean = (e) => {
-        setMovie({ ...movie, [e.target.name]: Boolean(e.target.value) })
+        setMovie({ ...movie, [e.target.name]: Boolean(e.target.value) });
+
     }
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        createMovie(movie, dispatch);
+    }
+    const upload = (items) => {
+        items.forEach(item => {
+            console.log(item);
+            const fileName = new Date().getTime() + item.label + item.file.name;
+            const storageRef = ref(storage, `/items/${fileName}`);
+            const uploadTask = uploadBytesResumable(storageRef, item.file);
+            uploadTask.on('state_changed',
+                (snapshot) => {
+                    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    alert(`Progress is ${progress}% done`);
+                    switch (snapshot.state) {
+                        case 'paused':
+                            console.log('Upload is paused');
+                            break;
+                        case 'running':
+                            console.log('Upload is running');
+                            break;
+                    }
+                }, (err) => {
+                    console.log(err);
+                },
+                () => {
+                    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                        setMovie(prev => { return { ...prev, [item.label]: downloadURL } })
+                    });
+                    setUploaded(prev => prev + 1);
+                }
+            )
+        });
+    }
+    const handleUpload = (e) => {
+        e.preventDefault();
+        if (!image || !titleImg || !trailer || !thumbnailImg || !video) {
+            return;
+        }
+        upload([
+            { file: image, label: "image" },
+            { file: titleImg, label: "imageTitle" },
+            { file: thumbnailImg, label: "imageSm" },
+            { file: trailer, label: "trailer" },
+            { file: video, label: "video" }
+        ]);
+    }
     return (
         <div className='newProduct'>
             <h1 className="newProductTitle">New Product</h1>
             <form action="" className="newProductForm">
                 <div className="newProductItem">
                     <label >Video</label>
-                    <input type="file" id="video" name="video" />
+                    <input type="file" id="video" required name="video" onChange={(e) => setVideo(e.target.files[0])} />
                 </div>
                 <div className="newProductItem">
                     <label >Trailer</label>
-                    <input type="file" id="trailer" name="trailer" />
+                    <input required type="file" id="trailer" name="trailer" onChange={(e) => setTrailer(e.target.files[0])} />
                 </div>
                 <div className="newProductItem">
                     <label>Title</label>
@@ -48,11 +103,15 @@ const NewProduct = () => {
                 </div>
                 <div className="newProductItem">
                     <label>Title Image</label>
-                    <input type="file" name='titleImg' />
+                    <input type="file" name='imageTitle' required onChange={(e) => setTitleImg(e.target.files[0])} />
                 </div>
                 <div className="newProductItem">
                     <label>Thumbnail Image</label>
-                    <input type="file" name='thumbImg' />
+                    <input type="file" name='imageSm' required onChange={(e) => setThumbnailImg(e.target.files[0])} />
+                </div>
+                <div className="newProductItem">
+                    <label>Image</label>
+                    <input type="file" name='image' required onChange={(e) => setImage(e.target.files[0])} />
                 </div>
                 <div className="newProductItem">
                     <label>Synoposis</label>
@@ -65,7 +124,11 @@ const NewProduct = () => {
                         <option value="">No</option>
                     </select>
                 </div>
-                <button className='newProductButton'>Create</button>
+                <div className="newProductButtonContainer">{
+                    uploaded === 5 ?
+                        <button className='newProductButton' onClick={handleSubmit} >Create</button> : <button className='newProductButton' onClick={handleUpload}>Upload</button>}
+                </div>
+
 
             </form></div>
     )
