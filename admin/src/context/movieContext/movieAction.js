@@ -46,3 +46,19 @@ export const deleteMovieSuccess = (id) => {
         type: 'DELETE_MOVIE_SUCCESS'
     }
 }
+export const updateMovieStart = () => {
+    return {
+        type: 'UPDATE_MOVIE_START'
+    }
+}
+export const updateMovieFailure = () => {
+    return {
+        type: 'UPDATE_MOVE_FAILURE'
+    }
+}
+export const updateMovieSuccess = (movie) => {
+    return {
+        payload: movie,
+        type: 'UPDATE_MOVIE_SUCCESS'
+    }
+}

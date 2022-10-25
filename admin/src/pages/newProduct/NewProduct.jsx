@@ -14,7 +14,7 @@ const NewProduct = () => {
     const [trailer, setTrailer] = useState(null);
     const [uploaded, setUploaded] = useState(0);
 
-    const { dispatch } = useContext(MovieContext);
+    const { dispatch, isFetching } = useContext(MovieContext);
 
     const handleChange = (e) => {
         setMovie({ ...movie, [e.target.name]: e.target.value });
@@ -31,14 +31,14 @@ const NewProduct = () => {
     }
     const upload = (items) => {
         items.forEach(item => {
-            console.log(item);
+
             const fileName = new Date().getTime() + item.label + item.file.name;
             const storageRef = ref(storage, `/items/${fileName}`);
             const uploadTask = uploadBytesResumable(storageRef, item.file);
             uploadTask.on('state_changed',
                 (snapshot) => {
                     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                    alert(`Progress is ${progress}% done`);
+                    console.log(`Progress is ${progress}% done`);
                     switch (snapshot.state) {
                         case 'paused':
                             console.log('Upload is paused');
@@ -126,7 +126,7 @@ const NewProduct = () => {
                 </div>
                 <div className="newProductButtonContainer">{
                     uploaded === 5 ?
-                        <button className='newProductButton' onClick={handleSubmit} >Create</button> : <button className='newProductButton' onClick={handleUpload}>Upload</button>}
+                        <button className='newProductButton' onClick={handleSubmit} >Create</button> : <button className='newProductButton' onClick={handleUpload} disabled={isFetching}>Upload</button>}
                 </div>
 
 

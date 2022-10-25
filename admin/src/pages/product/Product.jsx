@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Chart from '../../components/chart/Chart';
 import './Product.scss';
-import { ProductData } from '../../dummyData';
 import { Publish } from '@material-ui/icons';
 import { Link, useLocation } from 'react-router-dom';
 const Product = () => {
     const location = useLocation();
-    const movie = location.state.movie;
+    const [movie, setmovie] = useState(location.state.movie);
+
     return (
         <div className='product'>
 
@@ -78,7 +78,19 @@ const Product = () => {
                             <input type="file" />
                         </div>
                         <div className="productFormInputItem">
-                            <label>Synoposis</label>
+                            <label>Image</label>
+                            <input type="file" />
+                        </div>
+                        <div className="productFormInputItem">
+                            <label>Title Image</label>
+                            <input type="file" />
+                        </div>
+                        <div className="productFormInputItem">
+                            <label>Thumbnail Image</label>
+                            <input type="file" />
+                        </div>
+                        <div className="productFormInputItem">
+                            <label>Synopsis</label>
                             <textarea defaultValue={movie.description}></textarea>
                         </div>
 
