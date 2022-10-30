@@ -22,16 +22,18 @@ const NewProduct = () => {
 
     const handleChangeBoolean = (e) => {
         setMovie({ ...movie, [e.target.name]: Boolean(e.target.value) });
-
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (movie.title === '') {
+            alert('Movies must at least have a title');
+            return;
+        }
         createMovie(movie, dispatch);
     }
     const upload = (items) => {
         items.forEach(item => {
-
             const fileName = new Date().getTime() + item.label + item.file.name;
             const storageRef = ref(storage, `/items/${fileName}`);
             const uploadTask = uploadBytesResumable(storageRef, item.file);
@@ -39,20 +41,12 @@ const NewProduct = () => {
                 (snapshot) => {
                     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                     console.log(`Progress is ${progress}% done`);
-                    switch (snapshot.state) {
-                        case 'paused':
-                            console.log('Upload is paused');
-                            break;
-                        case 'running':
-                            console.log('Upload is running');
-                            break;
-                    }
                 }, (err) => {
                     console.log(err);
                 },
                 () => {
                     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                        setMovie(prev => { return { ...prev, [item.label]: downloadURL } })
+                        setMovie(prev => { return { ...prev, [item.label]: downloadURL } });
                     });
                     setUploaded(prev => prev + 1);
                 }
@@ -86,7 +80,7 @@ const NewProduct = () => {
                 </div>
                 <div className="newProductItem">
                     <label>Title</label>
-                    <input type="text" placeholder='Title' name='title' onChange={handleChange} required />
+                    <input type="text" placeholder='Title' name='title' minLength={1} onChange={handleChange} required />
                 </div>
                 <div className="newProductItem">
                     <label>Genre</label>

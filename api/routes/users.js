@@ -52,7 +52,7 @@ router.get('/find/:id', verify, async (req, res) => {
 });
 router.get('/', verify, async (req, res) => {
     const query = req.query.new;
-    if (req.user.admin) {
+    if (req.user?.admin) {
         try {
             const users = query ? await User.find().sort({ _id: -1 }).limit(5) : await User.find();
             res.status(200).json(users);
@@ -60,7 +60,9 @@ router.get('/', verify, async (req, res) => {
             res.status(500).json(err);
         }
     } else {
-        res.status(403).json('Forbidden Action');
+        if (!res.headersSent) {
+            res.status(403).json('Forbidden Action');
+        }
     }
 });
 router.get('/stats', async (req, res) => {

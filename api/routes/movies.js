@@ -41,7 +41,10 @@ router.put('/:id', verify, async (req, res) => {
             const updatedMovie = await Movie.findByIdAndUpdate(req.params.id, { $set: req.body }, { new: true });
             res.status(200).json(updatedMovie);
         } catch (err) {
-            res.status(500).json(err);
+            if (!res.headersSent) {
+
+                res.status(404).json(err);
+            }
         }
     } else {
         res.status(403).json('Forbidden Action');

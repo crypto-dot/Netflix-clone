@@ -21,14 +21,13 @@ const WidgetSm = () => {
         }
         getNewUsers();
     }, []);
-    console.log(newUsers);
     return (
         <div className='widgetSm'>
             <span className='widgetSmTitle'>New Join Members</span>
             <ul className='widgetSmList'>
                 {newUsers.map(user => {
                     return (
-                        <li className='widgetSmListItem'>
+                        <li key={user._id} className='widgetSmListItem'>
                             <img src={user.profilePic || 'https://i.pinimg.com/564x/0d/dc/ca/0ddccae723d85a703b798a5e682c23c1.jpg'} alt='user profile' className='widgetSmImg' />
                             <div className="widgetSmUser">
                                 <span className="widgetSmUsername">{user.username}</span>

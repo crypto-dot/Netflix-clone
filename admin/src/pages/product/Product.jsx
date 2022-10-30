@@ -1,15 +1,77 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Chart from '../../components/chart/Chart';
 import './Product.scss';
 import { Publish } from '@material-ui/icons';
 import { Link, useLocation } from 'react-router-dom';
+import { storage } from '../../firebase';
+import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
+import { updateMovie } from '../../context/movieContext/apiCalls';
+import { MovieContext } from '../../context/movieContext/movieContext';
+
 const Product = () => {
     const location = useLocation();
-    const [movie, setmovie] = useState(location.state.movie);
+    const [movie, setMovie] = useState(location.state.movie);
+    const [newMovie, setNewMovie] = useState(movie);
 
+    const { dispatch, isFetching, error } = useContext(MovieContext);
+
+    const [image, setImage] = useState(null);
+    const [titleImg, setTitleImg] = useState(null);
+    const [thumbnailImg, setThumbnailImg] = useState(null);
+    const [video, setVideo] = useState(null);
+    const [trailer, setTrailer] = useState(null);
+    const [uploaded, setUploaded] = useState(0);
+
+
+    const handleChange = (e) => {
+        setNewMovie(prev => { return { ...prev, [e.target.name]: e.target.value } })
+    }
+
+    const handleUpload = (e) => {
+        e.preventDefault();
+        if (!image || !titleImg || !video || !trailer || !thumbnailImg) {
+            return;
+        }
+        upload(
+            [
+                { file: image, label: 'image' },
+                { file: titleImg, label: 'imageTitle' },
+                { file: video, label: 'video' },
+                { file: trailer, label: 'trailer' },
+                { file: thumbnailImg, label: 'imageSm' }
+            ]
+        );
+    }
+    const upload = (items) => {
+        items.forEach(item => {
+            const fileName = new Date().getTime() + item.label + item.file.name;
+            const storageRef = ref(storage, `items/${fileName}`);
+            const uploadTask = uploadBytesResumable(storageRef, item.file);
+            uploadTask.on('state_changed',
+                (snapshot) => {
+                    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    console.log(`${fileName}: is ${progress}% done.`);
+                }, (err) => {
+                    console.log(err);
+                }, () => {
+                    getDownloadURL(uploadTask.snapshot.ref).then(
+                        (downloadURL) => {
+                            setNewMovie(prev => { return { ...prev, [item.label]: downloadURL } });
+                            setUploaded(prev => prev + 1);
+                        }
+                    );
+                });
+        });
+    }
+    const handleUpdate = (e) => {
+        e.preventDefault();
+        updateMovie(newMovie, dispatch);
+        if (!error) {
+            setMovie(prev => { return { ...prev, ...newMovie } });
+        }
+    }
     return (
         <div className='product'>
-
             <div className="productTitleContainer">
                 <h1 className="productTitle">{movie.title}</h1>
                 <Link to="/newMovie">
@@ -55,43 +117,43 @@ const Product = () => {
                     <div className="productFormLeft">
                         <div className="productFormInputItem">
                             <label>Title</label>
-                            <input type="text" defaultValue={movie.title} />
+                            <input type="text" name='title' placeholder={movie.title} onChange={handleChange} />
                         </div>
                         <div className="productFormInputItem">
                             <label>Genre</label>
-                            <input type="text" defaultValue={movie.genre} />
+                            <input type="text" name='genre' placeholder={movie.genre} onChange={handleChange} />
                         </div>
                         <div className="productFormInputItem">
                             <label>Year</label>
-                            <input type="number" defaultValue={movie.year} />
+                            <input type="number" name='year' placeholder={movie.year} onChange={handleChange} />
                         </div>
                         <div className="productFormInputItem">
                             <label>Age limit</label>
-                            <input type="number" defaultValue={movie.limit} />
+                            <input type="number" name='limit' placeholder={movie.limit} onChange={handleChange} />
                         </div>
                         <div className="productFormInputItem">
                             <label>Trailer</label>
-                            <input type="file" />
+                            <input type="file" name='trailer' onChange={(e) => setTrailer(e.target.files[0])} />
                         </div>
                         <div className="productFormInputItem">
                             <label>Video</label>
-                            <input type="file" />
+                            <input type="file" name='video' onChange={(e) => setVideo(e.target.files[0])} />
                         </div>
                         <div className="productFormInputItem">
                             <label>Image</label>
-                            <input type="file" />
+                            <input type="file" name='image' onChange={(e) => setImage(e.target.files[0])} />
                         </div>
                         <div className="productFormInputItem">
                             <label>Title Image</label>
-                            <input type="file" />
+                            <input type="file" name='imageTitle' onChange={(e) => setTitleImg(e.target.files[0])} />
                         </div>
                         <div className="productFormInputItem">
                             <label>Thumbnail Image</label>
-                            <input type="file" />
+                            <input type="file" name='imageSm' onChange={(e) => setThumbnailImg(e.target.files[0])} />
                         </div>
                         <div className="productFormInputItem">
                             <label>Synopsis</label>
-                            <textarea defaultValue={movie.description}></textarea>
+                            <textarea placeholder={movie.description}></textarea>
                         </div>
 
                     </div>
@@ -101,7 +163,8 @@ const Product = () => {
                             <label htmlFor='file'><Publish /></label>
                             <input type="file" id="file" style={{ display: "none" }} />
                         </div>
-                        <button className='productButton'>Update</button>
+
+                        {uploaded === 5 ? <button disabled={isFetching} onClick={handleUpdate} className='productButton'>Update</button> : <button onClick={handleUpload} className='productButton'>Upload Files</button>}
                     </div>
                 </form>
 
