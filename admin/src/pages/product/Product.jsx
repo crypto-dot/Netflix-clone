@@ -68,6 +68,7 @@ const Product = () => {
         updateMovie(newMovie, dispatch);
         if (!error) {
             setMovie(prev => { return { ...prev, ...newMovie } });
+
         }
     }
     return (

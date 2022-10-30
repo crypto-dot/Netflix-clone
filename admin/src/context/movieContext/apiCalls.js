@@ -30,15 +30,13 @@ export const deleteMovie = async (id, dispatch) => {
 
 export const updateMovie = async (movie, dispatch) => {
     dispatch(updateMovieStart());
-    debugger;
     try {
-        debugger;
-        const updatedMovie = await axios.put(`/movies/${movie._id}`, movie, {
+        const res = await axios.put(`/movies/${movie._id}`, movie, {
             headers: {
                 token: `Bearer ${JSON.parse(localStorage.getItem("user")).accessToken}`
             }
         });
-        dispatch(updateMovieSuccess(updatedMovie));
+        dispatch(updateMovieSuccess(res.data));
     } catch (err) {
         dispatch(updateMovieFailure());
     }
