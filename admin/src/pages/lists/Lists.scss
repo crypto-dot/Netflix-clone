@@ -1,0 +1,12 @@
+.lists {
+    flex: 4;
+
+    .deleteList {
+        cursor: pointer;
+
+        &:hover,
+        &:active {
+            color: red;
+        }
+    }
+}

@@ -63,8 +63,6 @@ const ProductList = () => {
             }
         }
     ];
-    console.log(movies);
-    debugger;
     return (
 
         <div className='productList'>
