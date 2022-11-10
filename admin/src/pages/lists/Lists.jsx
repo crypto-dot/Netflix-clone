@@ -25,7 +25,12 @@ const Lists = () => {
             field: 'action', headerName: 'Action', width: 180,
             renderCell: (params) => {
                 return (
-                    <DeleteOutline className='deleteList' onClick={() => handleDelete(params.row._id)} />
+                    <>
+                        <Link to={`/lists/${params.row._id}`} state={{ list: params.row }}>
+                            <button className='editList'>Edit</button>
+                        </Link>
+                        <DeleteOutline className='deleteList' onClick={() => handleDelete(params.row._id)} />
+                    </>
                 );
             }
 

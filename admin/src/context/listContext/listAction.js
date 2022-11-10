@@ -30,3 +30,35 @@ export const deleteListStart = () => {
         type: 'DELETE_LIST_START'
     }
 }
+export const createListFailure = () => {
+    return {
+        type: 'CREATE_LIST_FAILURE'
+    }
+}
+export const createListSuccess = (list) => {
+    return {
+        type: 'CREATE_LIST_SUCCESS',
+        payload: list
+    }
+}
+export const createListStart = () => {
+    return {
+        type: 'CREATE_LIST_START'
+    }
+}
+export const updateListFailure = () => {
+    return {
+        type: 'UPDATE_LIST_FAILURE'
+    }
+}
+export const updateListSuccess = (list) => {
+    return {
+        type: 'UPDATE_LIST_SUCCESS',
+        payload: list
+    }
+}
+export const updateListStart = () => {
+    return {
+        type: 'UPDATE_LIST_START'
+    }
+}

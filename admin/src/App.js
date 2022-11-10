@@ -14,6 +14,8 @@ import Login from "./pages/login/Login";
 import NotFound from "./pages/notFound/NotFound";
 import { useContext } from 'react';
 import { AuthContext } from "./context/authContext/authContext";
+import NewList from "./pages/newList/NewList";
+import List from "./pages/list/List";
 import Lists from "./pages/lists/Lists";
 
 function App() {
@@ -31,7 +33,9 @@ function App() {
           <Route path="/movies" element={user ? <ProductList /> : <Navigate to='/login' />}></Route>
           <Route path="/lists" element={user ? <Lists /> : <Navigate to='/login' />}></Route>
           <Route path="/movies/:movieId" element={user ? <Product /> : <Navigate to='/login' />}></Route>
+          <Route path="/lists/:listId" element={user ? <List /> : <Navigate to='/login' />}></Route>
           <Route path="/newMovie" element={user ? <NewProduct /> : <Navigate to='/login' />}></Route>
+          <Route path="/newList" element={user ? <NewList /> : <Navigate to='/login' />}></Route>
           <Route path="/users" element={user ? <UserList /> : <Navigate to='/login' />}></Route>
           <Route path="*" element={<NotFound />}></Route>
         </Routes>

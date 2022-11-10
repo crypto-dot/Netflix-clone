@@ -68,7 +68,7 @@ const NewProduct = () => {
     }
     return (
         <div className='newProduct'>
-            <h1 className="newProductTitle">New Product</h1>
+            <h1 className="newProductTitle">New Movie</h1>
             <form action="" className="newProductForm">
                 <div className="newProductItem">
                     <label >Video</label>

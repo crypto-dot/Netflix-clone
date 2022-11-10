@@ -1,0 +1,60 @@
+.newMovieList {
+    flex: 4;
+
+    .newMovieListTitle {
+        font-weight: 600;
+        padding-left: 1rem;
+    }
+
+    .newMovieListForm {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: fit-content;
+        column-gap: 2rem;
+
+        .newMovieListItem {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 1rem;
+
+            input {
+                border: none;
+                height: 2rem;
+                outline: none;
+                border-bottom: 1px solid black;
+                font-size: 1.1rem;
+                padding-bottom: .5rem;
+                width: 25ch
+            }
+
+            label {
+                margin-bottom: 1rem;
+            }
+
+        }
+
+        .newProductButtonContainer {
+            display: flex;
+            align-items: flex-end;
+            padding-bottom: 1rem;
+
+            .newProductButton {
+                margin-left: 1rem;
+                margin-top: 1rem;
+                cursor: pointer;
+                width: 50%;
+                color: white;
+                border: none;
+                border-radius: 1rem;
+                padding: .5rem 2rem;
+                background-color: rgb(11, 40, 155);
+
+                &:hover,
+                &:active {
+                    background-color: rgb(29, 56, 168);
+                }
+            }
+        }
+    }
+}
