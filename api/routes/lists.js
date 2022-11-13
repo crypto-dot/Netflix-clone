@@ -4,7 +4,7 @@ const List = require('../models/List');
 const verify = require('../verifyToken');
 
 router.post('/', verify, async (req, res) => {
-    if (req.user.admin) {
+    if (req.user?.admin) {
         const newList = new List(req.body);
         try {
             const savedList = await newList.save();
@@ -21,7 +21,7 @@ router.post('/', verify, async (req, res) => {
     }
 });
 router.delete('/:id', verify, async (req, res) => {
-    if (req.user.admin) {
+    if (req.user?.admin) {
         try {
             await List.findByIdAndDelete(req.params.id);
             res.status(200).json("List deleted");
@@ -63,4 +63,19 @@ router.get('/', verify, async (req, res) => {
     }
 
 });
+router.put('/:id', verify, async (req, res) => {
+    if (req.user?.admin) {
+        try {
+            await List.findByIdAndUpdate(req.body)
+        } catch (err) {
+            if (!req.headersSent) {
+                res.sendStatus(500);
+            }
+        }
+    } else {
+        if (!req.headersSent) {
+            res.sendStatus(403).json('Action Forbidden');
+        }
+    }
+})
 module.exports = router;

@@ -1,25 +1,47 @@
 .sidebar {
     flex: 1;
-    height: calc(100vh - 3.5rem);
     position: sticky;
     top: 3.5rem;
+
+    @media (max-width:475px) {
+        flex: 0;
+    }
 
 
     .sidebarWrapper {
         padding: 0rem 1rem 1rem 1rem;
 
+        @media (max-width:800px) {
+            position: sticky;
+            top: 4rem;
+        }
+
         .sidebarMenu {
-            margin-bottom: .5rem;
+
+            &:not(:last-child) {
+                margin-bottom: .5rem;
+                border-bottom: solid 1px rgb(203, 203, 203);
+            }
 
             .sidebarTitle {
                 margin-bottom: .25rem;
                 font-size: 1.25rem;
                 font-weight: 600;
                 color: rgb(11, 40, 155);
+
+                @media (max-width: 475px) {
+                    display: none;
+                }
             }
 
             .sidebarList {
                 list-style: none;
+
+                .sideBarSubTitle {
+                    @media (max-width: 475px) {
+                        display: none;
+                    }
+                }
 
                 a {
                     display: inline-block;

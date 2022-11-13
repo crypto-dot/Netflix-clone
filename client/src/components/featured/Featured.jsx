@@ -1,10 +1,8 @@
 import { InfoOutlined, PlayArrow } from "@material-ui/icons";
 import "./Featured.scss";
-import billBoardImg from "../../assets/billboardImg.webp";
-import BG from '../../assets/background.webp';
 import { React, useState, useEffect } from 'react';
 import axios from "axios";
-const Featured = ({ type }) => {
+const Featured = ({ type, setGenre }) => {
     const [content, setContent] = useState({});
     useEffect(() => {
         const getRandomContent = async () => {
@@ -29,7 +27,7 @@ const Featured = ({ type }) => {
             {type && (
                 <div className="category">
                     <span>{type === "movies" ? "Movies" : "Series"}</span>
-                    <select name="genre" id="genre">
+                    <select name="genre" id="genre" onChange={(e) => setGenre(e.target.value)}>
                         <option>
                             Genre
                         </option>

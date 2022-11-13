@@ -19,7 +19,7 @@ const Register = () => {
 
     const handleLogin = (e) => {
         e.preventDefault();
-        login({ email: email, password: password }, dispatch);
+        login({ email, password }, dispatch);
     }
 
     return (

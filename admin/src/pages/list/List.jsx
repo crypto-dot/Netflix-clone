@@ -5,8 +5,8 @@ import { Publish } from '@material-ui/icons';
 import { Link, useLocation } from 'react-router-dom';
 import { storage } from '../../firebase';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
-import { updateList } from '../../context/movieContext/apiCalls';
 import { ListContext } from '../../context/listContext/listContext';
+import { updateList } from '../../context/listContext/apiCalls';
 
 const List = () => {
     const location = useLocation();
@@ -21,12 +21,14 @@ const List = () => {
 
     const handleUpdate = (e) => {
         e.preventDefault();
+        updateList(list, dispatch);
         if (!error) {
             setList(prev => { return { ...prev, ...newList } });
         }
     }
     return (
         <div className='product'>
+            {console.log(list)}
             <div className="productTitleContainer">
                 <h1 className="productTitle">{list.title}</h1>
                 <Link to="/newList">
@@ -72,9 +74,9 @@ const List = () => {
                         </div>
                         <div className="productFormInputItem">
                             <label htmlFor="series">Series?</label>
-                            <select id="series" name="isSeries">
-                                <option value="true">Yes</option>
-                                <option value="">No</option>
+                            <select id="series" value={list.type === 'series'} onChange={handleChange} name="type">
+                                <option value={true}>Yes</option>
+                                <option value={false}>No</option>
                             </select>
                         </div>
 

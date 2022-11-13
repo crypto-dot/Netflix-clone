@@ -32,20 +32,22 @@ const NewList = () => {
         <div className='newMovieList'>
             <h1 className="newMovieListTitle">New Movie List</h1>
             <form action="" className="newMovieListForm">
-                <div className="newMovieListItem">
-                    <label>Title</label>
-                    <input type="text" placeholder='Title' name='title' minLength={1} onChange={handleChange} required />
-                </div>
-                <div className="newMovieListItem">
-                    <label>Genre</label>
-                    <input type="text" placeholder='Genre' name='genre' onChange={handleChange} />
-                </div>
-                <div className="newMovieListItem">
-                    <label>Type</label>
-                    <select defaultValue={"movie"} name='type' onChange={handleChange}>
-                        <option value="movie">Movie</option>
-                        <option value="series">Series</option>
-                    </select>
+                <div className="newMovieListItemContainer">
+                    <div className="newMovieListItem">
+                        <label>Title</label>
+                        <input type="text" placeholder='Title' name='title' minLength={1} onChange={handleChange} required />
+                    </div>
+                    <div className="newMovieListItem">
+                        <label>Genre</label>
+                        <input type="text" placeholder='Genre' name='genre' onChange={handleChange} />
+                    </div>
+                    <div className="newMovieListItem">
+                        <label>Type</label>
+                        <select defaultValue={"movie"} name='type' onChange={handleChange}>
+                            <option value="movie">Movie</option>
+                            <option value="series">Series</option>
+                        </select>
+                    </div>
                 </div>
                 <div className="newMovieListItem">
                     <label>Content</label>

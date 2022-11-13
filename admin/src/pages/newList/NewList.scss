@@ -8,14 +8,21 @@
 
     .newMovieListForm {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
         width: fit-content;
         column-gap: 2rem;
+
+        @media (max-width:1000px) {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @media (max-width:800px) {
+            grid-template-columns: 1fr;
+        }
 
         .newMovieListItem {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
             padding: 1rem;
 
             input {
@@ -28,6 +35,14 @@
                 width: 25ch
             }
 
+            select {
+                height: 100%;
+            }
+
+            select[multiple] {
+                text-align: center;
+            }
+
             label {
                 margin-bottom: 1rem;
             }
@@ -36,8 +51,9 @@
 
         .newProductButtonContainer {
             display: flex;
-            align-items: flex-end;
+            align-items: center;
             padding-bottom: 1rem;
+            height: 100%;
 
             .newProductButton {
                 margin-left: 1rem;

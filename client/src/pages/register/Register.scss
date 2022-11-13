@@ -6,6 +6,8 @@
 
 
     .top {
+        height: 20vh;
+
         .wrapper {
             padding: 1.25rem 2rem;
             display: flex;
@@ -43,6 +45,7 @@
         align-items: center;
         flex-direction: column;
         color: white;
+        height: 80vh;
 
         h1 {
             font-size: 4rem;
@@ -58,7 +61,7 @@
         }
 
         .input {
-            width: 50%;
+            width: 53%;
             height: 3rem;
             background-color: white;
             display: flex;

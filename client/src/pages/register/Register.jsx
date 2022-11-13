@@ -2,18 +2,23 @@ import "./Register.scss";
 import NetflixLogo from "../../assets/NetflixLogo.png";
 import { useRef, useState } from "react";
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { redirect } from 'react-router-dom';
 const Register = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const passwordRef = useRef();
+    const [username, setUsername] = useState("");
     const emailRef = useRef();
     const navigate = useNavigate();
     const handleStart = () => {
         setEmail(emailRef.current.value);
     }
-    const handleFinish = () => {
-        setPassword(passwordRef.current.value);
+    const handleFinish = (e) => {
+        e.preventDefault();
+        try {
+
+        } catch (err) {
+            alert(err);
+        }
     }
     return (
         <div className="register">
@@ -34,7 +39,8 @@ const Register = () => {
                     <input type="email" placeholder="Email Address" ref={emailRef} />
                     <button onClick={handleStart} className="registerButton">Get Started</button>
                 </div>) : (<form className="input">
-                    <input type="password" placeholder="Password" ref={passwordRef} />
+                    <input type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)} />
+                    <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
                     <button onClick={handleFinish} className="registerButton">Start</button>
                 </form>)}
             </div>

@@ -9,6 +9,10 @@
 
         .productTitle {
             font-weight: 600;
+
+            @media (max-width:490px) {
+                font-size: 1.5rem;
+            }
         }
 
         .productCreateButton {
@@ -20,6 +24,11 @@
             background-color: rgb(94, 220, 94);
             border: none;
             border-radius: .3rem;
+
+            @media (max-width:490px) {
+                font-size: 1rem;
+                padding: 0.25rem 1rem;
+            }
 
             &:hover,
             &:active {
@@ -73,6 +82,14 @@
 
                         .productInfoValue {
                             color: rgb(177, 177, 177);
+
+                            @media (max-width:490px) {
+                                font-size: .9rem;
+                            }
+
+                            @media (max-width: 400px) {
+                                font-size: .7rem;
+                            }
                         }
                     }
 
@@ -106,10 +123,14 @@
             display: flex;
             justify-content: space-between;
 
+            @media (max-width: 700px) {
+                flex-direction: column;
+            }
+
             .productFormLeft {
                 display: grid;
-                grid-template-columns: 1fr 1fr;
-                grid-template-rows: .5fr .5fr .5fr .5fr .5fr;
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr 1fr 1fr;
                 gap: 1rem;
 
                 .productFormInputItem {
@@ -140,6 +161,12 @@
                         line-height: 3rem;
                     }
 
+                    select {
+                        @media (max-width:700px) {
+                            width: 5rem;
+                        }
+                    }
+
                 }
 
                 .productFormInputItem:nth-child(9) {
@@ -163,6 +190,10 @@
                     gap: 1rem;
                     width: 15rem;
 
+                    @media (max-width:700px) {
+                        width: 5rem;
+                    }
+
                     .productFormImg {
                         height: 10rem;
                     }
@@ -177,6 +208,11 @@
                     border-radius: .2rem;
                     padding: .5rem 2.5rem;
                     cursor: pointer;
+
+                    @media (max-width:700px) {
+                        width: 5rem;
+                        padding: 0;
+                    }
 
                     &:hover,
                     &:active {
