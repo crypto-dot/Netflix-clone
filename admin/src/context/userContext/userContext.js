@@ -1,20 +1,20 @@
 import { UserReducer } from "./userReducer";
-import { useContext, useReducer } from "react";
+import { createContext, useReducer } from "react";
 const INITIAL_STATE = {
     isFetching: false,
     error: false,
     users: []
 }
 
-export const UserContext = useContext(INITIAL_STATE);
+export const UserContext = createContext(INITIAL_STATE);
 
-export const UserContextProvide = ({ children }) => {
+export const UserContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(UserReducer, INITIAL_STATE);
     return (<UserContext.Provider
         value={
             {
                 dispatch: dispatch,
-                state: state,
+                users: state.users,
                 isFetching: state.isFetching,
                 error: state.error
             }

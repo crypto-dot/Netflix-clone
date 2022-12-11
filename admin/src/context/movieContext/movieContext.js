@@ -17,7 +17,7 @@ export const MovieContextProvider = ({ children }) => {
                 movies: state.movies,
                 isFetching: state.isFetching,
                 error: state.error,
-                dispatch
+                dispatch: dispatch
             }}
         >
             {children}

@@ -3,17 +3,19 @@ import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 import { DeleteOutline } from '@material-ui/icons';
 import { UserRows } from '../../dummyData';
 import { Link } from 'react-router-dom';
-import { useState, React } from 'react';
-
-
+import { useState, React, useContext, useEffect } from 'react';
+import { UserContext } from '../../context/userContext/userContext';
+import { getUsers } from '../../context/userContext/apiCalls';
 
 const UserList = () => {
-    const [data, setData] = useState(UserRows);
+    const { dispatch, users } = useContext(UserContext);
     const handleDelete = (userId) => {
-        setData(data.filter(userRow => {
-            return userRow.id !== userId;
-        }));
+
     }
+    useEffect(() => {
+        console.log('e')
+        getUsers(dispatch);
+    }, [dispatch]);
     const columns = [
         { field: 'id', headerName: 'ID', width: 90 },
         {
@@ -22,7 +24,7 @@ const UserList = () => {
             renderCell: (params) => {
                 return (
                     <div className='userCell'>
-                        <img className='userCellImg' src={params.row.avatar} alt="avatar" />
+                        <img className='userCellImg' src={params.row.profilePic} alt="avatar" />
                         {params.row.username}
                     </div>
                 );
@@ -35,16 +37,9 @@ const UserList = () => {
             width: 200,
         },
         {
-            field: 'status',
-            headerName: 'Status',
-            type: 'number',
-            width: 120,
-        },
-        {
-            field: 'transaction',
-            headerName: 'Transaction',
-            type: 'number',
-            width: 150,
+            field: 'admin',
+            headerName: 'Administrator',
+            width: 200,
         },
         {
             field: 'action',
@@ -66,10 +61,11 @@ const UserList = () => {
     return (
         <div className='userList'>
             <DataGrid
-                rows={data}
+                rows={users}
                 columns={columns}
-                pageSize={5}
-                rowsPerPageOptions={[5]}
+                pageSize={10}
+                rowsPerPageOptions={[10]}
+                getRowId={r => r._id}
                 checkboxSelection
                 disableSelectionOnClick
             />
