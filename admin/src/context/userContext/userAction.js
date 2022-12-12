@@ -32,18 +32,18 @@ export const updateUserFailure = () => {
 }
 export const deleteUserStart = () => {
     return {
-        type: 'DELETE_USERS_START'
+        type: 'DELETE_USER_START'
     }
 }
 export const deleteUserSuccess = (id) => {
     return {
-        type: 'DELETE_USERS_SUCCESS',
+        type: 'DELETE_USER_SUCCESS',
         payload: id
     }
 }
 export const deleteUserFailure = () => {
     return {
-        type: 'DELETE_USERS_FAILURE'
+        type: 'DELETE_USER_FAILURE'
     }
 }
 

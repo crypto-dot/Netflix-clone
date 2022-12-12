@@ -5,15 +5,14 @@ import { UserRows } from '../../dummyData';
 import { Link } from 'react-router-dom';
 import { useState, React, useContext, useEffect } from 'react';
 import { UserContext } from '../../context/userContext/userContext';
-import { getUsers } from '../../context/userContext/apiCalls';
+import { deleteUser, getUsers } from '../../context/userContext/apiCalls';
 
 const UserList = () => {
     const { dispatch, users } = useContext(UserContext);
     const handleDelete = (userId) => {
-
+        deleteUser(userId, dispatch);
     }
     useEffect(() => {
-        console.log('e')
         getUsers(dispatch);
     }, [dispatch]);
     const columns = [
@@ -48,10 +47,12 @@ const UserList = () => {
             renderCell: (params) => {
                 return (
                     <>
-                        <Link to={`/user/${params.row.id}`}>
+                        <Link to={`/user/${params.row._id}`}
+                            state={{ user: params.row }}
+                        >
                             <button className='userCellEdit'>Edit</button>
                         </Link>
-                        <DeleteOutline className='userCellDelete' onClick={() => handleDelete(params.row.id)} />
+                        <DeleteOutline className='userCellDelete' onClick={() => handleDelete(params.row._id)} />
                     </>
                 );
             }

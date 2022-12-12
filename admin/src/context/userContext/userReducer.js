@@ -1,7 +1,6 @@
 export const UserReducer = (state, action) => {
     switch (action.type) {
         case 'GET_USERS_SUCCESS':
-            console.log(action.payload);
             return {
                 ...state,
                 isFetching: false,
@@ -44,7 +43,7 @@ export const UserReducer = (state, action) => {
                 ...state,
                 isFetching: false,
                 error: false,
-                users: [...state.users.filter(user => user._id !== action.payload._id), action.payload]
+                users: [...state.users.filter(user => user._id !== action.payload)]
             }
         case 'DELETE_USER_START':
             return {
