@@ -22,21 +22,21 @@ function App() {
   const { user } = useContext(AuthContext);
   return (
     <Router>
-      {user && <Navbar />}
+      {user?._id && <Navbar />}
       <div className="container">
-        {user && <Sidebar />}
+        {user?._id && <Sidebar />}
         <Routes>
-          <Route path="/login" element={!user ? <Login /> : <Navigate to='/' />}></Route>
-          <Route path="/" element={user ? <Home /> : <Navigate to='/login' />}></Route>
-          <Route path="/user/:userId" element={user ? <User /> : <Navigate to='/login' />}></Route>
-          <Route path="/newUser" element={user ? <NewUser /> : <Navigate to='/login' />}></Route>
-          <Route path="/movies" element={user ? <ProductList /> : <Navigate to='/login' />}></Route>
-          <Route path="/lists" element={user ? <Lists /> : <Navigate to='/login' />}></Route>
-          <Route path="/movies/:movieId" element={user ? <Product /> : <Navigate to='/login' />}></Route>
-          <Route path="/lists/:listId" element={user ? <List /> : <Navigate to='/login' />}></Route>
-          <Route path="/newMovie" element={user ? <NewProduct /> : <Navigate to='/login' />}></Route>
-          <Route path="/newList" element={user ? <NewList /> : <Navigate to='/login' />}></Route>
-          <Route path="/users" element={user ? <UserList /> : <Navigate to='/login' />}></Route>
+          <Route path="/login" element={!user?._id ? <Login /> : <Navigate to='/' />}></Route>
+          <Route path="/" element={user?._id ? <Home /> : <Navigate to='/login' />}></Route>
+          <Route path="/user/:userId" element={user?._id ? <User /> : <Navigate to='/login' />}></Route>
+          <Route path="/newUser" element={user?._id ? <NewUser /> : <Navigate to='/login' />}></Route>
+          <Route path="/movies" element={user?._id ? <ProductList /> : <Navigate to='/login' />}></Route>
+          <Route path="/lists" element={user?._id ? <Lists /> : <Navigate to='/login' />}></Route>
+          <Route path="/movies/:movieId" element={user?._id ? <Product /> : <Navigate to='/login' />}></Route>
+          <Route path="/lists/:listId" element={user?._id ? <List /> : <Navigate to='/login' />}></Route>
+          <Route path="/newMovie" element={user?._id ? <NewProduct /> : <Navigate to='/login' />}></Route>
+          <Route path="/newList" element={user?._id ? <NewList /> : <Navigate to='/login' />}></Route>
+          <Route path="/users" element={user?._id ? <UserList /> : <Navigate to='/login' />}></Route>
           <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </div>

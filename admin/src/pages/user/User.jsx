@@ -1,14 +1,39 @@
-import { CalendarTodayOutlined, LocationOn, MailOutlineOutlined, PermIdentity, PhoneAndroidOutlined, Publish } from '@material-ui/icons';
-import React from 'react';
-import { Link, useLocation } from 'react-router-dom'
+import { MailOutlineOutlined, PermIdentity, Publish } from '@material-ui/icons';
+import { React, useState, useContext, useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { updateUser } from '../../context/userContext/apiCalls';
 import './User.scss';
+import { UserContext } from '../../context/userContext/userContext';
+
 const User = () => {
-    const handleInput = (e) => {
-        return e.target.value = e.target.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');
-    }
+    const { dispatch, error } = useContext(UserContext);
     const location = useLocation();
-    const user = location.state.user;
-    console.log(user);
+    const navigate = useNavigate();
+    const [user, setUser] = useState(location.state.user);
+    const [newPassword, setNewPassword] = useState('');
+    console.log(location.state);
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (newPassword.length > 8) {
+            setUser(prev => { return { ...prev, ["password"]: newPassword } });
+        }
+        updateUser(user, dispatch);
+        if (!error) {
+
+        }
+    }
+    useEffect(
+        () => { console.log(user); }
+        , [user]);
+    const handleChange = (e) => {
+        setUser(prev => { return { ...prev, [e.target.name]: e.target.value } });
+    }
+    const handlePasswordChange = (e) => {
+        if (e.target.value.length < 8) {
+            return;
+        }
+        setNewPassword(e.target.value);
+    }
     return (
         <div className='user'>
             <div className="userTitleContainer">
@@ -43,20 +68,21 @@ const User = () => {
                 </div>
                 <div className="userUpdate">
                     <span className="userUpdateTitle">Edit</span>
-                    <form action="" className="userUpdateForm">
+                    <form onSubmit={handleSubmit} className="userUpdateForm">
                         <div className="userUpdateLeft">
                             <div className="userUpdateItem">
                                 <div className="userInputItem">
                                     <label htmlFor="">Username</label>
-                                    <input placeholder={user.username} type="text" className="userUpdateInput" />
+                                    <input onChange={handleChange}
+                                        defaultValue={user.username} placeholder={user.username} name="username" type="text" className="userUpdateInput" />
                                 </div>
                                 <div className="userInputItem">
                                     <label htmlFor="">Email</label>
-                                    <input placeholder={user.email} type="email" className="userUpdateInput" />
+                                    <input defaultValue={user.email} placeholder={user.email} onChange={handleChange} name="email" type="email" className="userUpdateInput" />
                                 </div>
                                 <div className="userInputItem">
                                     <label htmlFor="">Password (Hashed)</label>
-                                    <input placeholder="******" type="email" className="userUpdateInput" />
+                                    <input onChange={handlePasswordChange} defaultValue="●●●●●●" placeholder="●●●●●●" type="password" className="userUpdateInput" />
                                 </div>
                             </div>
                         </div>

@@ -1,4 +1,4 @@
-import { deleteUserFailure, deleteUserStart, deleteUserSuccess, getUsersFailure, getUsersStart, getUsersSuccess } from "./userAction";
+import { deleteUserFailure, deleteUserStart, deleteUserSuccess, getUsersFailure, getUsersStart, getUsersSuccess, updateUserFailure, updateUserStart, updateUserSuccess } from "./userAction";
 import axios from "axios";
 export const getUsers = async (dispatch) => {
     dispatch(getUsersStart());
@@ -13,7 +13,19 @@ export const getUsers = async (dispatch) => {
         dispatch(getUsersFailure());
     }
 }
-
+export const updateUser = async (user, dispatch) => {
+    dispatch(updateUserStart());
+    try {
+        const res = await axios.put(`/users/${user._id}`, user, {
+            headers: {
+                token: `Bearer ${JSON.parse(localStorage.getItem("user")).accessToken}`
+            }
+        });
+        dispatch(updateUserSuccess(res.data));
+    } catch (err) {
+        dispatch(updateUserFailure());
+    }
+}
 export const deleteUser = async (userID, dispatch) => {
     dispatch(deleteUserStart());
     try {

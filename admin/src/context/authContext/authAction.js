@@ -14,6 +14,11 @@ export const loginFailure = () => {
         type: 'LOGIN_FAILURE'
     }
 }
+export const loginResetError = () => {
+    return {
+        type: 'LOGIN_RESET_FAILURE'
+    }
+}
 export const logout = () => {
     return {
         type: 'LOGOUT'

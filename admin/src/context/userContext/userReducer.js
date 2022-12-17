@@ -30,7 +30,7 @@ export const UserReducer = (state, action) => {
             return {
                 ...state,
                 isFetching: true,
-                error: false,
+                error: false
             }
         case 'UPDATE_USER_FAILURE':
             return {

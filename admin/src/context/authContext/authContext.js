@@ -1,6 +1,5 @@
 import AuthReducer from "./authReducer";
 import { createContext, useReducer, useEffect } from 'react';
-
 const checkValidJSON = () => {
     try {
         const userObj = JSON.parse(localStorage.getItem("user"));
@@ -9,6 +8,7 @@ const checkValidJSON = () => {
         return null;
     }
 }
+
 const INITIAL_STATE = {
     user: checkValidJSON(),
     isFetching: false,
@@ -23,8 +23,6 @@ export const AuthContextProvider = ({ children }) => {
     useEffect(() => {
         localStorage.setItem("user", JSON.stringify(state.user));
     }, [state.user]);
-
-
     return (
         <AuthContext.Provider
             value={{
