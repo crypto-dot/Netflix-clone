@@ -1,4 +1,4 @@
-import { deleteUserFailure, deleteUserStart, deleteUserSuccess, getUsersFailure, getUsersStart, getUsersSuccess, updateUserFailure, updateUserStart, updateUserSuccess } from "./userAction";
+import { createUserFailure, createUserStart, createUserSuccess, deleteUserFailure, deleteUserStart, deleteUserSuccess, getUsersFailure, getUsersStart, getUsersSuccess, updateUserFailure, updateUserStart, updateUserSuccess } from "./userAction";
 import axios from "axios";
 export const getUsers = async (dispatch) => {
     dispatch(getUsersStart());
@@ -37,5 +37,25 @@ export const deleteUser = async (userID, dispatch) => {
         dispatch(deleteUserSuccess(userID));
     } catch (err) {
         dispatch(deleteUserFailure());
+    }
+}
+
+export const createUser = async (user, dispatch) => {
+    dispatch(createUserStart());
+    try {
+        const res = await axios.post('/auth/register/', user);
+        const userData = res.data;
+        if (user.admin) {
+            const res2 = await axios.put(`/users/${userData._id}`, user, {
+                headers: {
+                    token: `Bearer ${JSON.parse(localStorage.getItem("user")).accessToken}`
+                }
+            });
+            dispatch(createUserSuccess(res2.data));
+            return;
+        }
+        dispatch(createUserSuccess(userData));
+    } catch (err) {
+        dispatch(createUserFailure());
     }
 }

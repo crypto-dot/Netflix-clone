@@ -57,6 +57,25 @@ export const UserReducer = (state, action) => {
                 isFetching: false,
                 error: true
             }
+        case 'CREATE_USER_SUCCESS':
+            return {
+                ...state,
+                isFetching: false,
+                error: false,
+                users: [...state.users, action.payload]
+            }
+        case 'CREATE_USER_START':
+            return {
+                ...state,
+                isFetching: true,
+                error: false,
+            }
+        case 'CREATE_USER_FAILURE':
+            return {
+                ...state,
+                isFetching: false,
+                error: true
+            }
         default:
             return {
                 ...state

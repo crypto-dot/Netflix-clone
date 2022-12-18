@@ -2,8 +2,10 @@ const router = require('express').Router();
 const User = require('../models/User');
 const CryptoJS = require('crypto-js');
 const jwt = require('jsonwebtoken');
+const DEFAULT_PROFILE_PICTURE_URL = "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png";
 router.post("/register", async (req, res) => {
     const newUser = new User({
+        profilePic: req.body.profilePic ? req.body.profilePic : DEFAULT_PROFILE_PICTURE_URL,
         username: req.body.username,
         email: req.body.email,
         password: CryptoJS.AES.encrypt(req.body.password, process.env.SECRET_KEY).toString()

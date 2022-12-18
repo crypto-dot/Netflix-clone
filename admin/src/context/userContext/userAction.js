@@ -46,4 +46,20 @@ export const deleteUserFailure = () => {
         type: 'DELETE_USER_FAILURE'
     }
 }
+export const createUserStart = () => {
+    return {
+        type: 'CREATE_USER_START'
+    }
+}
+export const createUserSuccess = (id) => {
+    return {
+        type: 'CREATE_USER_SUCCESS',
+        payload: id
+    }
+}
+export const createUserFailure = () => {
+    return {
+        type: 'CREATE_USER_FAILURE'
+    }
+}
 
