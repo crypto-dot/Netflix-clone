@@ -2,7 +2,7 @@ import "./Register.scss";
 import NetflixLogo from "../../assets/NetflixLogo.png";
 import { useRef, useState } from "react";
 import React from 'react';
-import { redirect } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 const Register = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");

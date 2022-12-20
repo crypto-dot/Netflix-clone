@@ -8,7 +8,7 @@
         left: 3rem;
         font-size: 2rem;
         font-weight: 500;
-        color:white;
+        color: white;
         display: flex;
         align-items: center;
 
@@ -16,13 +16,14 @@
             cursor: pointer;
             background-color: var(--main-color);
             border: 1px solid black;
-            color:white;
+            color: white;
             margin-left: 1.25rem;
             padding-left: .4rem;
-            height:2rem;
+            height: 2rem;
 
         }
     }
+
     img {
         width: 100%;
         height: 100%;
@@ -30,23 +31,26 @@
     }
 
     .info {
-        width: 35%;
-        position:absolute;
-        left: 3.5rem;
+        max-width: 45ch;
+        position: absolute;
+        left: 3rem;
         top: 6rem;
-        color:white;
+        color: white;
         display: flex;
         flex-direction: column;
 
-        img {
-            width: 25rem;
-        }
         .desc {
             margin: 1.25rem 0rem;
+            line-height: 2;
+            max-height: 10rem;
+            overflow: scroll;
+
         }
+
         .buttons {
             display: flex;
             gap: .8rem;
+
             button {
                 padding: .8rem 1.25rem;
                 border: none;
@@ -56,16 +60,22 @@
                 gap: .3rem;
                 align-items: center;
                 font-size: 1.1rem;
-                cursor:pointer;
+                cursor: pointer;
+
                 &.play {
                     background-color: white;
                     color: var(--main-color);
                 }
+
                 &.more {
                     background-color: rgba(133, 133, 133, 0.95);
-                    color:white;
+                    color: white;
                 }
             }
         }
+    }
+
+    .adjusted {
+        top: 8rem;
     }
 }

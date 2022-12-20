@@ -82,7 +82,7 @@ const Product = () => {
             <div className="productTop">
                 <div className="productTopRight">
                     <div className="productInfoContainer">
-                        <div className="productInfoTop"><img src={movie.image} alt="" className="ProductInfoImg" /><span className="productInfoTitle">{movie.title}</span></div>
+                        <div className="productInfoTop"><img src={movie.imageSm} alt="" className="ProductInfoImg" /><span className="productInfoTitle">{movie.title}</span></div>
                         <div className="productInfoBottom">
                             <div className="productInfoItem">
                                 <span className="productInfoKey productId">Id:</span>
@@ -160,7 +160,7 @@ const Product = () => {
                     </div>
                     <div className="productFormRight">
                         <div className="productUpload">
-                            <img src={movie.image} className='productFormImg' />
+                            <img src={movie.imageSm} className='productFormImg' />
                             <label htmlFor='file'><Publish /></label>
                             <input type="file" id="file" style={{ display: "none" }} />
                         </div>

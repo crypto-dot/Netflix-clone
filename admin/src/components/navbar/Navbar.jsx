@@ -15,7 +15,7 @@ const Navbar = () => {
                     ArbizuAdmin
                 </span></div>
                 <div className="rightNav">
-                    <img src="https://www.w3schools.com/w3images/avatar6.png" alt="avatar" className='avatar' />
+                    <img src={JSON.parse(localStorage.getItem("user")).profilePic} alt="avatar" className='avatar' />
                     <div className="navRightIcons">
                         <Settings className="icon" />
                     </div>

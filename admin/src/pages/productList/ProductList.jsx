@@ -22,7 +22,7 @@ const ProductList = () => {
             renderCell: (params) => {
                 return (
                     <div className='productCell'>
-                        <img className='productCellImg' src={params.row.image} alt="avatar" />
+                        <img className='productCellImg' src={params.row.imageSm} alt="avatar" />
                         {params.row.title}
                     </div>
                 );

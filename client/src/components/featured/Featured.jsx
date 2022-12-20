@@ -48,7 +48,7 @@ const Featured = ({ type, setGenre }) => {
                 </div>
             )}
             <img src={content.image} width="100%" />
-            <div className="info">
+            <div className={type ? "info adjusted" : "info"}>
                 <img src={content.imageTitle} />
 
                 <span className="desc">
